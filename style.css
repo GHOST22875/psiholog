@@ -97,7 +97,7 @@
         
         /* Главный баннер */
         .hero {
-            background: url('https://i.pinimg.com/736x/5b/62/99/5b6299c05f59bfbe8be3ea5d1a2d6e2a.jpg');
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://i.pinimg.com/736x/5b/62/99/5b6299c05f59bfbe8be3ea5d1a2d6e2a.jpg');
             background-size: cover;
             background-position: center;
             color: white;
