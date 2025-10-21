@@ -286,6 +286,32 @@
             padding: 30px 0;
         }
         
+        /* Анимации при скролле */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .animate-on-scroll-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .animate-on-scroll-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .animate-on-scroll.visible,
+        .animate-on-scroll-left.visible,
+        .animate-on-scroll-right.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+        
         /* Адаптивность */
         @media (max-width: 768px) {
             .about-content, .contact-content {
