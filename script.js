@@ -48,46 +48,66 @@ function easeInOutCubic(t) {
 // Анимация появления элементов при скролле
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px' // Уменьшено для более раннего срабатывания
+    rootMargin: '0px 0px -30px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+// Создаем отдельные наблюдатели для каждого контейнера
+const containerObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const delay = entry.target.dataset.delay || 0;
+            // Находим все анимируемые элементы внутри этого контейнера
+            const animatedElements = entry.target.querySelectorAll(
+                '.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right, .service-card'
+            );
             
-            setTimeout(() => {
-                entry.target.classList.add('visible');
-            }, delay);
+            // Добавляем класс visible всем элементам одновременно
+            animatedElements.forEach(el => {
+                el.classList.add('visible');
+            });
         }
     });
 }, observerOptions);
 
+// Стандартный наблюдатель для отдельных элементов
+const elementObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Анимации с уменьшенными задержками
-    document.querySelectorAll('.animate-on-scroll').forEach((el, index) => {
-        el.dataset.delay = index * 50; // Уменьшено с 100 до 50
-        observer.observe(el);
+    // Находим основные контейнеры с группами элементов
+    const containers = [
+        '.approaches-grid',
+        '.requests-content', 
+        '.process-steps',
+        '.services-grid',
+        '.education-content',
+        '.testimonials-grid',
+        '.contact-content'
+    ];
+    
+    // Наблюдаем за контейнерами для одновременного появления
+    containers.forEach(selector => {
+        const container = document.querySelector(selector);
+        if (container) {
+            containerObserver.observe(container);
+        }
     });
     
-    document.querySelectorAll('.animate-on-scroll-left').forEach((el, index) => {
-        el.dataset.delay = index * 75; // Уменьшено с 150 до 75
-        observer.observe(el);
+    // Для отдельных элементов, не входящих в группы, используем стандартный наблюдатель
+    document.querySelectorAll('.section-title.animate-on-scroll').forEach(el => {
+        elementObserver.observe(el);
     });
     
-    document.querySelectorAll('.animate-on-scroll-right').forEach((el, index) => {
-        el.dataset.delay = index * 75; // Уменьшено с 150 до 75
-        observer.observe(el);
-    });
-    
-    // Специальные анимации для карточек услуг
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.style.transform = 'translateY(30px) rotate(1deg)';
-        card.style.opacity = '0.7';
-        card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)'; // Ускорено
-    });
+    // Для about-content особый случай, так как там только два элемента
+    const aboutContent = document.querySelector('.about-content');
+    if (aboutContent) {
+        containerObserver.observe(aboutContent);
+    }
 
     // Инициализация карты
     initMap();
