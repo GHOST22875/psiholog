@@ -330,3 +330,14 @@
                 font-size: 18px;
             }
         }
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Отключить стандартную прокрутку если используем кастомную */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: auto;
+    }
+}
