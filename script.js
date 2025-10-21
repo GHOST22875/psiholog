@@ -109,9 +109,14 @@ document.addEventListener('DOMContentLoaded', function() {
         containerObserver.observe(aboutContent);
     }
 
-    // Инициализация карты
-    initMap();
+    // Инициализация специальных анимаций для карточек услуг
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.style.transform = 'translateY(30px) rotate(1deg)';
+        card.style.opacity = '0.7';
+        card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    });
 });
+
 // Подсветка активного пункта меню при скролле
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section[id]');
@@ -144,7 +149,8 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     reducedMotionStyle.textContent = `
         .animate-on-scroll,
         .animate-on-scroll-left,
-        .animate-on-scroll-right {
+        .animate-on-scroll-right,
+        .service-card {
             opacity: 1 !important;
             transform: none !important;
             transition: none !important;
@@ -152,3 +158,166 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     `;
     document.head.appendChild(reducedMotionStyle);
 }
+
+// Обработчик для кнопок в контактах
+document.addEventListener('DOMContentLoaded', function() {
+    // Обработчик для кнопки "Позвонить"
+    const callButton = document.querySelector('a[href^="tel:"]');
+    if (callButton) {
+        callButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const phoneNumber = this.getAttribute('href').replace('tel:', '');
+            if (confirm(`Позвонить по номеру ${phoneNumber}?`)) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+    
+    // Обработчик для кнопки "Написать"
+    const emailButton = document.querySelector('a[href^="mailto:"]');
+    if (emailButton) {
+        emailButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = this.getAttribute('href').replace('mailto:', '');
+            if (confirm(`Написать письмо на ${email}?`)) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+});
+
+// Дополнительные улучшения для пользовательского опыта
+document.addEventListener('DOMContentLoaded', function() {
+    // Плавное появление страницы при загрузке
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.3s ease-in';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+    
+    // Добавляем loading="lazy" для всех изображений для улучшения производительности
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.setAttribute('loading', 'lazy');
+    });
+    
+    // Предзагрузка критических ресурсов
+    const criticalResources = [
+        'https://i.pinimg.com/736x/35/8c/94/358c94aa9da3a23a638f45ed45d8194c.jpg',
+        'https://i.pinimg.com/736x/5b/62/99/5b6299c05f59bfbe8be3ea5d1a2d6e2a.jpg'
+    ];
+    
+    criticalResources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = resource;
+        link.as = 'image';
+        document.head.appendChild(link);
+    });
+});
+
+// Обработка ошибок загрузки изображений
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            console.warn('Не удалось загрузить изображение:', this.src);
+            // Можно установить заглушку
+            this.style.backgroundColor = '#f0f0f0';
+            this.style.display = 'flex';
+            this.style.alignItems = 'center';
+            this.style.justifyContent = 'center';
+            this.innerHTML = '<span style="color: #666;">Изображение</span>';
+        });
+    });
+});
+
+// Оптимизация производительности при скролле
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+            scrollTimeout = null;
+            
+            // Обновляем активный пункт меню
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            const scrollPosition = window.scrollY + 100;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+        }, 10);
+    }
+});
+
+// Ресайз обработчик для адаптивности
+window.addEventListener('resize', function() {
+    // Переинициализация при изменении размера окна
+    const headerHeight = document.querySelector('header').offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+});
+
+// Установка CSS переменной для высоты header
+document.addEventListener('DOMContentLoaded', function() {
+    const headerHeight = document.querySelector('header').offsetHeight;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+});
+
+// Дополнительные улучшения доступности
+document.addEventListener('DOMContentLoaded', function() {
+    // Добавляем aria-labels для улучшения доступности
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+            const targetSection = document.querySelector(href);
+            if (targetSection) {
+                const sectionTitle = targetSection.querySelector('h2') || targetSection.querySelector('h1');
+                if (sectionTitle) {
+                    link.setAttribute('aria-label', `Перейти к разделу: ${sectionTitle.textContent}`);
+                }
+            }
+        }
+    });
+    
+    // Добавляем клавиатурную навигацию
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            // Закрытие модальных окон (если будут добавлены)
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+    });
+    
+    // Улучшение фокуса для элементов
+    const focusableElements = document.querySelectorAll('a, button, input, textarea, select');
+    focusableElements.forEach(el => {
+        el.addEventListener('focus', function() {
+            this.style.outline = '2px solid #5d8aa8';
+            this.style.outlineOffset = '2px';
+        });
+        
+        el.addEventListener('blur', function() {
+            this.style.outline = 'none';
+        });
+    });
+});
