@@ -1,4 +1,3 @@
-/* style.css */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +8,7 @@
 body {
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 .container {
@@ -33,7 +32,7 @@ p {
 
 .btn {
     display: inline-block;
-    background: #3498db;
+    background: #5d8aa8;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -42,10 +41,11 @@ p {
     text-decoration: none;
     font-size: 16px;
     transition: background 0.3s;
+    font-weight: 600;
 }
 
 .btn:hover {
-    background: #2980b9;
+    background: #4a708c;
 }
 
 /* Шапка */
@@ -72,7 +72,7 @@ header {
 }
 
 .logo span {
-    color: #3498db;
+    color: #5d8aa8;
 }
 
 nav ul {
@@ -81,7 +81,7 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 25px;
 }
 
 nav ul li a {
@@ -90,10 +90,11 @@ nav ul li a {
     font-weight: 500;
     transition: color 0.3s;
     position: relative;
+    font-size: 15px;
 }
 
 nav ul li a:hover {
-    color: #3498db;
+    color: #5d8aa8;
 }
 
 /* Главный баннер */
@@ -146,14 +147,136 @@ nav ul li a:hover {
     flex: 1;
 }
 
+/* Мои подходы */
+.approaches {
+    background: #f8f9fa;
+}
+
+.approaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.approach-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.approach-card:hover {
+    transform: translateY(-10px);
+}
+
+.approach-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.approach-card h3 {
+    color: #5d8aa8;
+    margin-bottom: 15px;
+}
+
+/* С какими запросами помогаю */
+.help-requests {
+    background: white;
+}
+
+.requests-content {
+    display: flex;
+    gap: 50px;
+}
+
+.requests-column {
+    flex: 1;
+}
+
+.requests-column h3 {
+    color: #5d8aa8;
+    margin-bottom: 20px;
+}
+
+.requests-column ul {
+    list-style: none;
+}
+
+.requests-column ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.requests-column ul li:before {
+    content: "•";
+    color: #5d8aa8;
+    position: absolute;
+    left: 0;
+}
+
+/* Как проходят консультации */
+.process {
+    background: #f8f9fa;
+}
+
+.process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: #5d8aa8;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.process-step h3 {
+    color: #5d8aa8;
+    margin-bottom: 10px;
+}
+
 /* Услуги */
 .services {
-    background: #f1f8ff;
+    background: white;
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #5d8aa8;
 }
 
 .services-grid {
@@ -168,6 +291,7 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
+    border-top: 4px solid #5d8aa8;
 }
 
 .service-card:hover {
@@ -175,7 +299,64 @@ nav ul li a:hover {
 }
 
 .service-card h3 {
-    color: #3498db;
+    color: #5d8aa8;
+}
+
+.service-duration {
+    color: #666;
+    font-size: 14px;
+}
+
+.service-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Образование */
+.education {
+    background: #f8f9fa;
+}
+
+.education-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.education-item {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.education-item h3 {
+    color: #5d8aa8;
+    margin-bottom: 15px;
+}
+
+.education-year {
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.education-item ul {
+    list-style: none;
+}
+
+.education-item ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.education-item ul li:before {
+    content: "•";
+    color: #5d8aa8;
+    position: absolute;
+    left: 0;
 }
 
 /* Отзывы */
@@ -190,7 +371,7 @@ nav ul li a:hover {
 }
 
 .testimonial-card {
-    background: #f9f9f9;
+    background: #f8f9fa;
     padding: 30px;
     border-radius: 10px;
     position: relative;
@@ -199,7 +380,7 @@ nav ul li a:hover {
 .testimonial-card:before {
     content: """;
     font-size: 80px;
-    color: #3498db;
+    color: #5d8aa8;
     position: absolute;
     top: -10px;
     left: 10px;
@@ -216,7 +397,7 @@ nav ul li a:hover {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #3498db;
+    background: #5d8aa8;
     margin-right: 15px;
     display: flex;
     align-items: center;
@@ -248,21 +429,32 @@ nav ul li a:hover {
     flex: 1;
 }
 
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
 .contact-item {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .contact-icon {
     width: 40px;
     height: 40px;
-    background: #3498db;
+    background: #5d8aa8;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.contact-details h3 {
+    color: white;
+    margin-bottom: 5px;
 }
 
 /* Подвал */
@@ -301,7 +493,7 @@ footer {
 
 /* Активный пункт меню */
 nav a.active {
-    color: #3498db !important;
+    color: #5d8aa8 !important;
     font-weight: 600;
 }
 
@@ -312,18 +504,18 @@ nav a.active::after {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #3498db;
+    background: #5d8aa8;
     transition: width 0.3s ease;
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
-    .about-content, .contact-content {
-        flex-direction: column;
-    }
-    
+@media (max-width: 1024px) {
     nav ul {
         display: none;
+    }
+    
+    .about-content, .contact-content, .requests-content {
+        flex-direction: column;
     }
     
     .hero h1 {
@@ -336,5 +528,28 @@ nav a.active::after {
     
     .contact-map {
         margin-top: 30px;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid, .approaches-grid, .education-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero {
+        padding: 150px 0 80px;
     }
 }
