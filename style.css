@@ -188,16 +188,23 @@ nav ul li a:hover {
 
 .requests-content {
     display: flex;
-    gap: 50px;
+    gap: 30px;
+    justify-content: space-between;
 }
 
 .requests-column {
     flex: 1;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .requests-column h3 {
     color: #5d8aa8;
     margin-bottom: 20px;
+    text-align: center;
+    font-size: 18px;
 }
 
 .requests-column ul {
@@ -205,9 +212,10 @@ nav ul li a:hover {
 }
 
 .requests-column ul li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding-left: 20px;
     position: relative;
+    line-height: 1.5;
 }
 
 .requests-column ul li:before {
@@ -215,6 +223,19 @@ nav ul li a:hover {
     color: #5d8aa8;
     position: absolute;
     left: 0;
+    font-weight: bold;
+}
+
+/* Адаптивность для трех колонок */
+@media (max-width: 1024px) {
+    .requests-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .requests-column {
+        width: 100%;
+    }
 }
 
 /* Как проходят консультации */
