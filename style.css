@@ -98,6 +98,8 @@ nav ul li a {
     transition: color 0.3s;
     position: relative;
     font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 nav ul li a:hover {
@@ -112,12 +114,15 @@ nav ul li a:focus {
 
 nav ul li a:active {
     background-color: transparent;
+    outline: none;
+    box-shadow: none;
 }
 
 /* Для всех кнопок убираем стандартную подсветку */
 .btn:focus,
 a:focus {
     outline: none;
+     box-shadow: none;
 }
 
 /* Главный баннер */
