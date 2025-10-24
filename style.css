@@ -6,7 +6,7 @@
 }
 
 html {
-    max-width: 100%;
+max-width: 100%;
     overflow-x: hidden;
 }
 
@@ -53,18 +53,6 @@ p {
 
 .btn:hover {
     background: #4a708c;
-}
-
-/* Убираем подсветку при нажатии на кнопки */
-.btn:focus,
-a:focus,
-nav ul li a:focus {
-    outline: none;
-    background-color: transparent;
-}
-
-nav ul li a:active {
-    background-color: transparent;
 }
 
 /* Шапка */
@@ -114,6 +102,22 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #5d8aa8;
+}
+
+/* Убираем подсветку при нажатии на кнопки в меню */
+nav ul li a:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+nav ul li a:active {
+    background-color: transparent;
+}
+
+/* Для всех кнопок убираем стандартную подсветку */
+.btn:focus,
+a:focus {
+    outline: none;
 }
 
 /* Главный баннер */
@@ -333,7 +337,7 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
     border-top: 4px solid #5d8aa8;
-    height: 100%;
+    height: 100%; /* Добавляем высоту 100% */
     display: flex;
     flex-direction: column;
 }
@@ -357,7 +361,6 @@ nav ul li a:hover {
     font-size: 20px;
     font-weight: bold;
     color: #2c3e50;
-    margin-top: auto;
 }
 
 /* Образование */
@@ -504,23 +507,6 @@ nav ul li a:hover {
     margin-bottom: 5px;
 }
 
-.contact-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 2px solid #5d8aa8;
-    color: #5d8aa8;
-}
-
-.btn-secondary:hover {
-    background: #5d8aa8;
-    color: white;
-}
-
 /* Подвал */
 footer {
     background: #1a252f;
@@ -570,6 +556,69 @@ nav a.active::after {
     height: 2px;
     background: #5d8aa8;
     transition: width 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    nav ul {
+        display: none;
+    }
+    
+    .about-content, .contact-content, .requests-content {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .contact-map {
+        margin-top: 30px;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid, .approaches-grid, .education-content {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        height: auto; /* На мобильных отключаем фиксированную высоту */
+        min-height: 200px; /* Минимальная высота для мобильных */
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero {
+        padding: 150px 0 80px;
+    }
+}
+
+/* Специальные анимации для карточек услуг */
+.service-card {
+    transform: translateY(30px) rotate(1deg);
+    opacity: 0.7;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card.visible {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
 }
 
 /* Контакты - статическая карта */
@@ -632,68 +681,25 @@ nav a.active::after {
     margin-top: 20px !important;
 }
 
-/* Специальные анимации для карточек услуг */
-.service-card {
-    transform: translateY(30px) rotate(1deg);
-    opacity: 0.7;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.contact-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.service-card.visible {
-    transform: translateY(0) rotate(0);
-    opacity: 1;
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #5d8aa8;
+    color: #5d8aa8;
 }
 
-/* Адаптивность */
-@media (max-width: 1024px) {
-    nav ul {
-        display: none;
-    }
-    
-    .about-content, .contact-content, .requests-content {
-        flex-direction: column;
-    }
-    
-    .hero h1 {
-        font-size: 36px;
-    }
-    
-    .hero p {
-        font-size: 18px;
-    }
-    
-    .contact-map {
-        margin-top: 30px;
-    }
-    
-    .process-step {
-        flex-direction: column;
-        text-align: center;
-    }
+.btn-secondary:hover {
+    background: #5d8aa8;
+    color: white;
 }
 
+/* Адаптивность для контактов */
 @media (max-width: 768px) {
-    .services-grid, .approaches-grid, .education-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    section {
-        padding: 60px 0;
-    }
-    
-    .hero {
-        padding: 150px 0 80px;
-    }
-    
-    .service-card {
-        height: auto;
-        min-height: 200px;
-    }
-    
     .contact-actions {
         flex-direction: column;
     }
@@ -701,141 +707,142 @@ nav a.active::after {
     .static-map {
         height: 300px;
     }
-}
 
-/* Дополнительные стили для оптимизации под iPhone */
-:root {
-    --safe-area-inset-top: env(safe-area-inset-top);
-    --safe-area-inset-bottom: env(safe-area-inset-bottom);
-    --safe-area-inset-left: env(safe-area-inset-left);
-    --safe-area-inset-right: env(safe-area-inset-right);
-}
 
-/* Оптимизация для Safari на iOS */
-@supports (-webkit-touch-callout: none) {
-    .hero {
-        background-attachment: scroll;
-    }
-    
-    .btn {
-        -webkit-appearance: none;
-        border-radius: 8px;
-    }
-    
-    /* Улучшение производительности анимаций */
-    .approach-card, .service-card, .testimonial-card {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-    }
-}
-
-/* Адаптация под вырез iPhone */
-.header-container, .container {
-    padding-left: max(20px, var(--safe-area-inset-left));
-    padding-right: max(20px, var(--safe-area-inset-right));
-}
-
-/* Оптимизация для Touch Bar */
-@media (hover: none) and (pointer: coarse) {
-    .btn, nav a {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    nav ul li {
-        margin-left: 15px;
-    }
-    
-    /* Увеличение области касания для мобильных устройств */
-    .approach-card, .service-card, .testimonial-card {
-        padding: 25px 20px;
-    }
-}
-
-/* Адаптация под разные размеры экранов iPhone */
-@media only screen and (max-width: 430px) {
-    .hero {
-        padding: calc(120px + var(--safe-area-inset-top)) 0 80px;
-    }
-    
-    .hero h1 {
-        font-size: 32px;
-        line-height: 1.2;
-    }
-    
-    .hero p {
-        font-size: 16px;
-    }
-    
-    .section-title {
-        font-size: 28px;
-    }
-    
-    .process-step {
-        padding: 20px;
-    }
-    
-    .step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .contact-actions {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Оптимизация для iPhone в ландшафтном режиме */
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        padding: 100px 0 60px;
-    }
-    
-    .hero h1 {
-        font-size: 28px;
-    }
-    
-    section {
-        padding: 40px 0;
-    }
-}
-
-/* Улучшение читаемости на OLED экранах */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000;
-        color: #f0f0f0;
-    }
-    
-    .approach-card, .service-card, .testimonial-card, 
-    .education-item, .requests-column {
-        background: #1c1c1e;
-        color: #f0f0f0;
-    }
-    
-    h1, h2, h3 {
-        color: #ffffff;
-    }
-    
-    .service-price, .service-duration {
-        color: #cccccc;
-    }
-}
-
-/* Плавная прокрутка для iOS */
-html {
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Улучшение отображения на Retina дисплеях */
-.about-img img, .static-map {
-    image-rendering: -webkit-optimize-contrast;
+ /* Дополнительные стили для оптимизации под iPhone */
+        :root {
+            --safe-area-inset-top: env(safe-area-inset-top);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom);
+            --safe-area-inset-left: env(safe-area-inset-left);
+            --safe-area-inset-right: env(safe-area-inset-right);
+        }
+        
+        /* Оптимизация для Safari на iOS */
+        @supports (-webkit-touch-callout: none) {
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            .btn {
+                -webkit-appearance: none;
+                border-radius: 8px;
+            }
+            
+            /* Улучшение производительности анимаций */
+            .approach-card, .service-card, .testimonial-card {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+        }
+        
+        /* Адаптация под вырез iPhone */
+        .header-container, .container {
+            padding-left: max(20px, var(--safe-area-inset-left));
+            padding-right: max(20px, var(--safe-area-inset-right));
+        }
+        
+        /* Оптимизация для Touch Bar */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, nav a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            /* Увеличение области касания для мобильных устройств */
+            .approach-card, .service-card, .testimonial-card {
+                padding: 25px 20px;
+            }
+        }
+        
+        /* Адаптация под разные размеры экранов iPhone */
+        @media only screen and (max-width: 430px) {
+            .hero {
+                padding: calc(120px + var(--safe-area-inset-top)) 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .process-step {
+                padding: 20px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+            
+            .contact-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        /* Оптимизация для iPhone в ландшафтном режиме */
+        @media only screen and (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+        }
+        
+        /* Улучшение читаемости на OLED экранах */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #000;
+                color: #f0f0f0;
+            }
+            
+            .approach-card, .service-card, .testimonial-card, 
+            .education-item, .requests-column {
+                background: #1c1c1e;
+                color: #f0f0f0;
+            }
+            
+            h1, h2, h3 {
+                color: #ffffff;
+            }
+            
+            .service-price, .service-duration {
+                color: #cccccc;
+            }
+        }
+        
+        /* Плавная прокрутка для iOS */
+        html {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Улучшение отображения на Retina дисплеях */
+        .about-img img, .static-map {
+            image-rendering: -webkit-optimize-contrast;
+        }
 }
