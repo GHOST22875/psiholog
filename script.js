@@ -1,4 +1,3 @@
-// script.js
 // Плавная прокрутка к якорям
 document.querySelectorAll('nav a, .hero .btn').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -140,6 +139,19 @@ window.addEventListener('scroll', function() {
             link.classList.add('active');
         }
     });
+});
+
+// Убираем подсветку при клике на элементы меню
+document.addEventListener('DOMContentLoaded', function() {
+    // Убираем стандартное выделение при клике
+    document.addEventListener('mousedown', function(e) {
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+            e.target.style.webkitTapHighlightColor = 'transparent';
+        }
+    });
+    
+    // Для iOS Safari
+    document.addEventListener('touchstart', function() {}, {passive: true});
 });
 
 // Отключение анимаций для пользователей, которые их не предпочитают
@@ -323,44 +335,44 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Дополнительные оптимизации для iOS
-        document.addEventListener('DOMContentLoaded', function() {
-            // Предотвращение масштабирования при фокусе на полях ввода
-            document.addEventListener('touchstart', function() {}, {passive: true});
+document.addEventListener('DOMContentLoaded', function() {
+    // Предотвращение масштабирования при фокусе на полях ввода
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // Оптимизация для iPhone X и новее
+    function updateSafeArea() {
+        const header = document.querySelector('header');
+        const footer = document.querySelector('footer');
+        
+        if (CSS.supports('padding-top: env(safe-area-inset-top)')) {
+            document.documentElement.style.setProperty('--safe-area-inset-top', env(safe-area-inset-top) + 'px');
+            document.documentElement.style.setProperty('--safe-area-inset-bottom', env(safe-area-inset-bottom) + 'px');
             
-            // Оптимизация для iPhone X и новее
-            function updateSafeArea() {
-                const header = document.querySelector('header');
-                const footer = document.querySelector('footer');
-                
-                if (CSS.supports('padding-top: env(safe-area-inset-top)')) {
-                    document.documentElement.style.setProperty('--safe-area-inset-top', env(safe-area-inset-top) + 'px');
-                    document.documentElement.style.setProperty('--safe-area-inset-bottom', env(safe-area-inset-bottom) + 'px');
-                    
-                    // Добавляем отступы для безопасных зон
-                    if (header) {
-                        header.style.paddingTop = 'var(--safe-area-inset-top)';
-                    }
-                    if (footer) {
-                        footer.style.paddingBottom = 'var(--safe-area-inset-bottom)';
-                    }
-                }
+            // Добавляем отступы для безопасных зон
+            if (header) {
+                header.style.paddingTop = 'var(--safe-area-inset-top)';
             }
-            
-            // Обновляем при загрузке и изменении ориентации
-            updateSafeArea();
-            window.addEventListener('resize', updateSafeArea);
-            window.addEventListener('orientationchange', updateSafeArea);
-            
-            // Оптимизация для iOS Safari - предотвращение bounce эффекта
-            document.body.addEventListener('touchmove', function(e) {
-                if (e.target === document.body || e.target === document.documentElement) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            // Улучшение производительности на iOS
-            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right');
-            animatedElements.forEach(el => {
-                el.style.willChange = 'transform, opacity';
-            });
-        });
+            if (footer) {
+                footer.style.paddingBottom = 'var(--safe-area-inset-bottom)';
+            }
+        }
+    }
+    
+    // Обновляем при загрузке и изменении ориентации
+    updateSafeArea();
+    window.addEventListener('resize', updateSafeArea);
+    window.addEventListener('orientationchange', updateSafeArea);
+    
+    // Оптимизация для iOS Safari - предотвращение bounce эффекта
+    document.body.addEventListener('touchmove', function(e) {
+        if (e.target === document.body || e.target === document.documentElement) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Улучшение производительности на iOS
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-on-scroll-left, .animate-on-scroll-right');
+    animatedElements.forEach(el => {
+        el.style.willChange = 'transform, opacity';
+    });
+});
