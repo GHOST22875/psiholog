@@ -364,3 +364,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 el.style.willChange = 'transform, opacity';
             });
         });
+
+// Дополнительная защита от outline на мобильных устройствах
+document.addEventListener('touchstart', function() {}, {passive: true});
+
+// Убираем outline при тапе на мобильных
+document.addEventListener('DOMContentLoaded', function() {
+    if ('ontouchstart' in window) {
+        document.documentElement.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+    }
+});
