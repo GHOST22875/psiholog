@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aboutContent) {
         containerObserver.observe(aboutContent);
     }
-
+/*
     // Инициализация специальных анимаций для карточек услуг
     document.querySelectorAll('.service-card').forEach(card => {
         card.style.transform = 'translateY(30px) rotate(1deg)';
         card.style.opacity = '0.7';
         card.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    });
+    });*/
 });
 
 // Подсветка активного пункта меню при скролле
