@@ -430,7 +430,7 @@ a:focus {
 }
 
 .testimonial-card:before {
-    content: """;
+    content: "";
     font-size: 80px;
     color: #5d8aa8;
     position: absolute;
