@@ -104,6 +104,22 @@ nav ul li a:hover {
     color: #5d8aa8;
 }
 
+/* Убираем подсветку при нажатии на кнопки в меню */
+nav ul li a:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+nav ul li a:active {
+    background-color: transparent;
+}
+
+/* Для всех кнопок убираем стандартную подсветку */
+.btn:focus,
+a:focus {
+    outline: none;
+}
+
 /* Главный баннер */
 .hero {
     background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://i.pinimg.com/736x/5b/62/99/5b6299c05f59bfbe8be3ea5d1a2d6e2a.jpg');
@@ -311,6 +327,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    align-items: stretch;
 }
 
 .service-card {
@@ -320,6 +337,9 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
     border-top: 4px solid #5d8aa8;
+    height: 100%; /* Добавляем высоту 100% */
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
@@ -328,11 +348,13 @@ nav ul li a:hover {
 
 .service-card h3 {
     color: #5d8aa8;
+    margin-bottom: 15px;
 }
 
 .service-duration {
     color: #666;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .service-price {
@@ -567,6 +589,11 @@ nav a.active::after {
 @media (max-width: 768px) {
     .services-grid, .approaches-grid, .education-content {
         grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        height: auto; /* На мобильных отключаем фиксированную высоту */
+        min-height: 200px; /* Минимальная высота для мобильных */
     }
     
     .testimonials-grid {
