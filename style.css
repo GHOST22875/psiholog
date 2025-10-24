@@ -5,20 +5,31 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Исправление проблемы с горизонтальной прокруткой */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 body {
     line-height: 1.6;
     color: #333;
     background-color: #ffffff;
+    width: 100%;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 section {
     padding: 80px 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 h1, h2, h3 {
@@ -42,6 +53,7 @@ p {
     font-size: 16px;
     transition: background 0.3s;
     font-weight: 600;
+    max-width: 100%;
 }
 
 .btn:hover {
@@ -56,6 +68,8 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    left: 0;
+    right: 0;
 }
 
 .header-container {
@@ -63,12 +77,15 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 700;
     color: #2c3e50;
+    white-space: nowrap;
 }
 
 .logo span {
@@ -78,6 +95,7 @@ header {
 nav ul {
     display: flex;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -91,6 +109,7 @@ nav ul li a {
     transition: color 0.3s;
     position: relative;
     font-size: 15px;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
@@ -105,6 +124,9 @@ nav ul li a:hover {
     color: white;
     text-align: center;
     padding: 180px 0 100px;
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 .hero h1 {
@@ -117,6 +139,7 @@ nav ul li a:hover {
     font-size: 20px;
     max-width: 700px;
     margin: 0 auto 30px;
+    width: 100%;
 }
 
 /* Обо мне */
@@ -128,6 +151,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 50px;
+    width: 100%;
 }
 
 .about-img {
@@ -135,16 +159,19 @@ nav ul li a:hover {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 100%;
 }
 
 .about-img img {
     width: 100%;
     height: auto;
     display: block;
+    max-width: 100%;
 }
 
 .about-text {
     flex: 1;
+    width: 100%;
 }
 
 /* Мои подходы */
@@ -156,6 +183,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
+    width: 100%;
 }
 
 .approach-card {
@@ -165,6 +193,7 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     text-align: center;
     transition: transform 0.3s;
+    width: 100%;
 }
 
 .approach-card:hover {
@@ -190,6 +219,7 @@ nav ul li a:hover {
     display: flex;
     gap: 30px;
     justify-content: space-between;
+    width: 100%;
 }
 
 .requests-column {
@@ -198,6 +228,7 @@ nav ul li a:hover {
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
 }
 
 .requests-column h3 {
@@ -209,6 +240,7 @@ nav ul li a:hover {
 
 .requests-column ul {
     list-style: none;
+    width: 100%;
 }
 
 .requests-column ul li {
@@ -216,6 +248,8 @@ nav ul li a:hover {
     padding-left: 20px;
     position: relative;
     line-height: 1.5;
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .requests-column ul li:before {
@@ -224,18 +258,6 @@ nav ul li a:hover {
     position: absolute;
     left: 0;
     font-weight: bold;
-}
-
-/* Адаптивность для трех колонок */
-@media (max-width: 1024px) {
-    .requests-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .requests-column {
-        width: 100%;
-    }
 }
 
 /* Как проходят консультации */
@@ -247,6 +269,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 100%;
 }
 
 .process-step {
@@ -257,6 +280,7 @@ nav ul li a:hover {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
 }
 
 .step-number {
@@ -287,6 +311,7 @@ nav ul li a:hover {
     text-align: center;
     margin-bottom: 50px;
     position: relative;
+    width: 100%;
 }
 
 .section-title:after {
@@ -304,6 +329,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    width: 100%;
 }
 
 .service-card {
@@ -313,6 +339,7 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
     border-top: 4px solid #5d8aa8;
+    width: 100%;
 }
 
 .service-card:hover {
@@ -343,6 +370,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    width: 100%;
 }
 
 .education-item {
@@ -350,6 +378,7 @@ nav ul li a:hover {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 100%;
 }
 
 .education-item h3 {
@@ -365,12 +394,14 @@ nav ul li a:hover {
 
 .education-item ul {
     list-style: none;
+    width: 100%;
 }
 
 .education-item ul li {
     margin-bottom: 10px;
     padding-left: 20px;
     position: relative;
+    word-wrap: break-word;
 }
 
 .education-item ul li:before {
@@ -389,6 +420,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    width: 100%;
 }
 
 .testimonial-card {
@@ -396,6 +428,7 @@ nav ul li a:hover {
     padding: 30px;
     border-radius: 10px;
     position: relative;
+    width: 100%;
 }
 
 .testimonial-card:before {
@@ -412,6 +445,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 .client-avatar {
@@ -425,12 +459,14 @@ nav ul li a:hover {
     justify-content: center;
     color: white;
     font-weight: bold;
+    flex-shrink: 0;
 }
 
 /* Контакты */
 .contact {
     background: #2c3e50;
     color: white;
+    width: 100%;
 }
 
 .contact h2 {
@@ -440,26 +476,31 @@ nav ul li a:hover {
 .contact-content {
     display: flex;
     gap: 50px;
+    width: 100%;
 }
 
 .contact-info {
     flex: 1;
+    width: 100%;
 }
 
 .contact-map {
     flex: 1;
+    width: 100%;
 }
 
 .contact-items {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    width: 100%;
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+    width: 100%;
 }
 
 .contact-icon {
@@ -484,6 +525,9 @@ footer {
     color: white;
     text-align: center;
     padding: 30px 0;
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
 /* Анимации при скролле */
@@ -529,64 +573,6 @@ nav a.active::after {
     transition: width 0.3s ease;
 }
 
-/* Адаптивность */
-@media (max-width: 1024px) {
-    nav ul {
-        display: none;
-    }
-    
-    .about-content, .contact-content, .requests-content {
-        flex-direction: column;
-    }
-    
-    .hero h1 {
-        font-size: 36px;
-    }
-    
-    .hero p {
-        font-size: 18px;
-    }
-    
-    .contact-map {
-        margin-top: 30px;
-    }
-    
-    .process-step {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .services-grid, .approaches-grid, .education-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    section {
-        padding: 60px 0;
-    }
-    
-    .hero {
-        padding: 150px 0 80px;
-    }
-}
-
-/* Специальные анимации для карточек услуг */
-.service-card {
-    transform: translateY(30px) rotate(1deg);
-    opacity: 0.7;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.service-card.visible {
-    transform: translateY(0) rotate(0);
-    opacity: 1;
-}
-
 /* Контакты - статическая карта */
 .contact-map {
     flex: 1;
@@ -628,6 +614,7 @@ nav a.active::after {
     text-align: center;
     color: white;
     padding: 20px;
+    width: 100%;
 }
 
 .map-marker {
@@ -639,6 +626,7 @@ nav a.active::after {
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: 500;
+    width: 100%;
 }
 
 .map-hint {
@@ -651,6 +639,8 @@ nav a.active::after {
     display: flex;
     gap: 15px;
     margin-top: 30px;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .btn-secondary {
@@ -664,8 +654,76 @@ nav a.active::after {
     color: white;
 }
 
-/* Адаптивность для контактов */
+/* Специальные анимации для карточек услуг */
+.service-card {
+    transform: translateY(30px) rotate(1deg);
+    opacity: 0.7;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.service-card.visible {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    nav ul {
+        display: none;
+    }
+    
+    .about-content, .contact-content, .requests-content {
+        flex-direction: column;
+    }
+    
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    .contact-map {
+        margin-top: 30px;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .requests-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .requests-column {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
+    .services-grid, .approaches-grid, .education-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero {
+        padding: 150px 0 80px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
     .contact-actions {
         flex-direction: column;
     }
@@ -673,142 +731,165 @@ nav a.active::after {
     .static-map {
         height: 300px;
     }
+    
+    .approach-card, .service-card, .testimonial-card, 
+    .education-item, .requests-column {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+}
 
+/* Дополнительные исправления для очень маленьких экранов */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .process-step {
+        padding: 15px;
+    }
+    
+    .approach-card, .service-card, .testimonial-card {
+        padding: 20px 15px;
+    }
+    
+    /* Убедимся, что текст не выходит за пределы */
+    h1, h2, h3, p, li {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    nav ul li {
+        margin-left: 15px;
+    }
+    
+    .contact-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
 
- /* Дополнительные стили для оптимизации под iPhone */
-        :root {
-            --safe-area-inset-top: env(safe-area-inset-top);
-            --safe-area-inset-bottom: env(safe-area-inset-bottom);
-            --safe-area-inset-left: env(safe-area-inset-left);
-            --safe-area-inset-right: env(safe-area-inset-right);
-        }
-        
-        /* Оптимизация для Safari на iOS */
-        @supports (-webkit-touch-callout: none) {
-            .hero {
-                background-attachment: scroll;
-            }
-            
-            .btn {
-                -webkit-appearance: none;
-                border-radius: 8px;
-            }
-            
-            /* Улучшение производительности анимаций */
-            .approach-card, .service-card, .testimonial-card {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-            }
-        }
-        
-        /* Адаптация под вырез iPhone */
-        .header-container, .container {
-            padding-left: max(20px, var(--safe-area-inset-left));
-            padding-right: max(20px, var(--safe-area-inset-right));
-        }
-        
-        /* Оптимизация для Touch Bar */
-        @media (hover: none) and (pointer: coarse) {
-            .btn, nav a {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin-left: 15px;
-            }
-            
-            /* Увеличение области касания для мобильных устройств */
-            .approach-card, .service-card, .testimonial-card {
-                padding: 25px 20px;
-            }
-        }
-        
-        /* Адаптация под разные размеры экранов iPhone */
-        @media only screen and (max-width: 430px) {
-            .hero {
-                padding: calc(120px + var(--safe-area-inset-top)) 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-                line-height: 1.2;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .process-step {
-                padding: 20px;
-            }
-            
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-            
-            .contact-actions {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-        
-        /* Оптимизация для iPhone в ландшафтном режиме */
-        @media only screen and (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                padding: 100px 0 60px;
-            }
-            
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            section {
-                padding: 40px 0;
-            }
-        }
-        
-        /* Улучшение читаемости на OLED экранах */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #000;
-                color: #f0f0f0;
-            }
-            
-            .approach-card, .service-card, .testimonial-card, 
-            .education-item, .requests-column {
-                background: #1c1c1e;
-                color: #f0f0f0;
-            }
-            
-            h1, h2, h3 {
-                color: #ffffff;
-            }
-            
-            .service-price, .service-duration {
-                color: #cccccc;
-            }
-        }
-        
-        /* Плавная прокрутка для iOS */
-        html {
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Улучшение отображения на Retina дисплеях */
-        .about-img img, .static-map {
-            image-rendering: -webkit-optimize-contrast;
-        }
+/* Оптимизация для iOS */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        background-attachment: scroll;
+    }
+    
+    .btn {
+        -webkit-appearance: none;
+        border-radius: 8px;
+    }
+    
+    /* Улучшение производительности анимаций */
+    .approach-card, .service-card, .testimonial-card {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+
+/* Адаптация под вырез iPhone */
+.header-container, .container {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+}
+
+/* Оптимизация для Touch Bar */
+@media (hover: none) and (pointer: coarse) {
+    .btn, nav a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin-left: 15px;
+    }
+    
+    /* Увеличение области касания для мобильных устройств */
+    .approach-card, .service-card, .testimonial-card {
+        padding: 25px 20px;
+    }
+}
+
+/* Оптимизация для iPhone в ландшафтном режиме */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 100px 0 60px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+}
+
+/* Улучшение читаемости на OLED экранах */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: #f0f0f0;
+    }
+    
+    .approach-card, .service-card, .testimonial-card, 
+    .education-item, .requests-column {
+        background: #1c1c1e;
+        color: #f0f0f0;
+    }
+    
+    h1, h2, h3 {
+        color: #ffffff;
+    }
+    
+    .service-price, .service-duration {
+        color: #cccccc;
+    }
+}
+
+/* Плавная прокрутка для iOS */
+html {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Улучшение отображения на Retina дисплеях */
+.about-img img, .static-map {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Гарантируем, что все элементы имеют правильную ширину */
+* {
+    max-width: 100%;
+}
+
+/* Исправление для длинного текста */
+h1, h2, h3, h4, h5, h6, p, span, a, li {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
