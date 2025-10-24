@@ -861,3 +861,34 @@ nav a.active::after {
             image-rendering: -webkit-optimize-contrast;
         }
 }
+
+/* Убираем стандартное выделение при нажатии на iOS */
+nav ul li a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Убираем outline для всех состояний */
+nav ul li a:focus,
+nav ul li a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Для всех интерактивных элементов */
+button:focus,
+.btn:focus,
+a:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Особенно для Safari на iOS */
+@media (max-width: 1024px) {
+    nav ul li a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+    }
+}
